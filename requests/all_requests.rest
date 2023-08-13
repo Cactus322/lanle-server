@@ -1,0 +1,17 @@
+### Create user
+POST http://localhost:3030/api/users
+Content-Type: application/json
+
+{
+    "username": "test",
+    "passwordHash": "test"
+}
+
+### Login user
+POST http://localhost:3030/api/login
+Content-Type: application/json
+
+{
+    "username": "test",
+    "password": "test"
+}
