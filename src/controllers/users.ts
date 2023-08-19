@@ -12,7 +12,7 @@ userRouter.get('/', async (_requset, response) => {
 })
 
 userRouter.post('/', async (requset, response) => {
-	const { username, passwordHash } = requset.body
+	const { username, password } = requset.body
 
 	let usernameIsTaken = false
 
@@ -24,7 +24,7 @@ userRouter.post('/', async (requset, response) => {
 		}
 	})
 
-	if (username.length < 3 || passwordHash.length < 3) {
+	if (username.length < 3 || password.length < 3) {
 		return response.status(400).json({
 			error: 'content missing',
 		})
@@ -35,11 +35,11 @@ userRouter.post('/', async (requset, response) => {
 	}
 
 	const saltRounds = 10
-	const password = await bcrypt.hash(passwordHash, saltRounds)
+	const passwordHash = await bcrypt.hash(password, saltRounds)
 
 	const user = new User({
 		username,
-		passwordHash: password,
+		passwordHash: passwordHash,
 	})
 
 	const savedUser = await user.save()

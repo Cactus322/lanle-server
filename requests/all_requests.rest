@@ -3,8 +3,8 @@ POST http://localhost:3030/api/users
 Content-Type: application/json
 
 {
-    "username": "test",
-    "passwordHash": "test"
+    "username": "test5",
+    "password": "test5"
 }
 
 ### Login user
