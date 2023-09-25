@@ -22,7 +22,7 @@ bookRouter.post('/', middleware.userExtractor, async (request: IUserRequest, res
 		return response.status(400).json({
 			error: 'Content missing',
 		})
-	} else if (user.books.length === 10) {
+	} else if (user.books.length === 12) {
         return response.status(405).json({
 			error: 'Maximum number of books',
 		})
