@@ -2,7 +2,13 @@ import mongoose from 'mongoose'
 
 const userSchema = new mongoose.Schema({
     username: String,
-    passwordHash: String
+    passwordHash: String,
+    books: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Book'
+        }
+    ]
 })
 
 userSchema.set('toJSON', {

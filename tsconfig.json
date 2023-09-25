@@ -4,10 +4,10 @@
     "outDir": "./build/",
     "module": "commonjs",
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
+    "noUnusedLocals": false, //develop
+    "noUnusedParameters": false, //develop
+    "noImplicitReturns": false, //develop
+    "noImplicitAny": true, //develop
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,

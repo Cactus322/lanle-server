@@ -5,9 +5,10 @@ import config from './utils/config'
 import logger from './utils/logger'
 import userRouter from './controllers/users'
 import loginRouter from './controllers/login'
+import bookRouter from './controllers/books'
+import middleware from './utils/middleware'
 
 const app = express()
-
 
 mongoose
 	.connect(config.MONGODB_URI)
@@ -23,5 +24,6 @@ app.use(express.json())
 
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/books', middleware.tokenExtractor, bookRouter)
 
 export default app
