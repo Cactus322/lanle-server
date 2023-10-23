@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken'
 import User from '../models/user'
-import { NextFunction, Response } from 'express'
 import { IUserRequest } from '../types'
 
 const tokenExtractor =async (request: IUserRequest, _response: any, next: any) => {
@@ -15,11 +14,12 @@ const tokenExtractor =async (request: IUserRequest, _response: any, next: any) =
 }
 
 const userExtractor = async (request: IUserRequest, response: any, next: any) => {
-    const decodedToken: any = jwt.verify(request.token, process.env.SECRET as string)
-    if (!decodedToken.id) {
+    try {
+        const decodedToken: any = jwt.verify(request.token, process.env.SECRET as string)
+        request.user = await User.findById(decodedToken.id)
+    } catch {
         return response.status(401).json({ error: 'token missing or invalid' })
     }
-    request.user = await User.findById(decodedToken.id)
 
     next()
 }
