@@ -30,4 +30,10 @@ GET http://localhost:3030/api/books
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJpZCI6IjY0ZDkyOWQ2ODg3OTQ3NjNjOTQ3NDMwYiIsImlhdCI6MTY5NTU4ODY5Mn0.2jpit26-LnAi0QDCeYRvRmzIV63qt8yxDE0HF42YLlM
 
+###
+POST http://localhost:3030/api/translate
+Content-Type: application/json
 
+{
+    "word": "Привет"
+}

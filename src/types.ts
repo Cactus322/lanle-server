@@ -5,3 +5,7 @@ export interface IUserRequest extends Request {
     token: string,
     user: any
 }
+
+export interface ITranslateRequest {
+    word: string
+}

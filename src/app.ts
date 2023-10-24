@@ -7,6 +7,7 @@ import userRouter from './controllers/users'
 import loginRouter from './controllers/login'
 import bookRouter from './controllers/books'
 import middleware from './utils/middleware'
+import translateRouter from './controllers/translate'
 
 const app = express()
 
@@ -25,5 +26,6 @@ app.use(express.json())
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
 app.use('/api/books', middleware.tokenExtractor, bookRouter)
+app.use('/api/translate', translateRouter)
 
 export default app
