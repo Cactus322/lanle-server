@@ -35,5 +35,5 @@ POST http://localhost:3030/api/translate
 Content-Type: application/json
 
 {
-    "word": "Привет"
+    "word": "Hello"
 }
