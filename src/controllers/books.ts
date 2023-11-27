@@ -1,4 +1,4 @@
-import express, { Response } from 'express'
+import express from 'express'
 import Book from '../models/book'
 import middleware from '../utils/middleware'
 import { IUserRequest } from '../types'
@@ -14,7 +14,6 @@ bookRouter.get('/', middleware.userExtractor, async (_request: IUserRequest, res
 })
 
 bookRouter.post('/', middleware.userExtractor, async (request: IUserRequest, response: any) => {
-
 	const { bookUrl } = request.body
     const user = request.user
 

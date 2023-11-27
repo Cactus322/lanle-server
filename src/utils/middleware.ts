@@ -16,6 +16,7 @@ const tokenExtractor =async (request: IUserRequest, _response: any, next: any) =
 const userExtractor = async (request: IUserRequest, response: any, next: any) => {
     try {
         const decodedToken: any = jwt.verify(request.token, process.env.SECRET as string)
+        console.log(decodedToken);
         request.user = await User.findById(decodedToken.id)
     } catch {
         return response.status(401).json({ error: 'token missing or invalid' })
