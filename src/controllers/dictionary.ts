@@ -27,21 +27,22 @@ dictionaryRouter.post(
 	'/',
 	middleware.userExtractor,
 	async (
-		request: IDictionaryRequest<{ text: IDictionaryText }, IUser>,
+		request: IDictionaryRequest<{ wordEn: string, wordRu: string }, IUser>,
 		response: any
 	) => {
-		const { text } = request.body
+		const { wordEn, wordRu } = request.body
 		const user = request.user
 
-		if (!text.wordEn || !text.wordRu) {
+		if (!wordEn || !wordRu) {
 			return response.status(400).json({
 				error: 'Content missing',
 			})
 		}
 
+
 		const dictionary = new Dictionary({
-			wordEn: text.wordEn,
-			wordRu: text.wordRu,
+			wordEn: wordEn,
+			wordRu: wordRu,
 		})
 
 		const savedDictionary = await dictionary.save()
